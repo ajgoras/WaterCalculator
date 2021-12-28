@@ -78,9 +78,10 @@ container3Button.addEventListener('click', () => {
 
 resetButton.addEventListener('click', () => {
     localStorage.clear();
-    container3Count.innerHTML = 0;
-    container2Count.innerHTML = 0;
-    container1Count.innerHTML = 0;
+    var counts = document.querySelectorAll('.containerValues');
+    counts.forEach(element => {
+        element.innerHTML = 0;
+    });
     resetButton.classList.add('bounce-4');
     setTimeout(() => {
         resetButton.classList.remove('bounce-4');
