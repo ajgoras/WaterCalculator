@@ -19,6 +19,8 @@ if (container3CounterLs != null) {
     container3Count.innerHTML = parseInt(container3CounterLs);
 }
 
+var containerValues = document.querySelectorAll('.containerValues');
+console.log(containerValues);
 
 
 
