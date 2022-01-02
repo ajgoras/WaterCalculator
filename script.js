@@ -20,9 +20,11 @@ if (container3CounterLs != null) {
 }
 
 var containerValues = document.querySelectorAll('.containerValues');
-console.log(containerValues);
+var containerDivs = document.querySelectorAll('.containerDivs');
 
-
+containerDivs[0].querySelector('h2').innerHTML = GlassOfWater.name + ' (' + GlassOfWater.capacity + ml + ')';
+containerDivs[1].querySelector('h2').innerHTML = smallBottle.name + ' (' + smallBottle.capacity + ml + ')';
+containerDivs[2].querySelector('h2').innerHTML = bigBottle.name + ' (' + bigBottle.capacity + ml + ')';
 
 container1Button.addEventListener('click', () => {
     container1CounterLs = localStorage.getItem('container1Count');
