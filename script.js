@@ -34,7 +34,7 @@ containerDivs[2].querySelector('h2').innerHTML = bigBottle.name + ' (' + bigBott
 container1Button.addEventListener('click', () => {
     container1CounterLs = localStorage.getItem('container1Count');
     var counter = 0;
-    var containerCapacity = parseFloat(allWater.innerHTML);
+    var tempAllWater = parseFloat(allWater.innerHTML);
     if (container1CounterLs==null) {
         counter = 0;
     }
@@ -44,9 +44,9 @@ container1Button.addEventListener('click', () => {
     counter = counter + 1;
     container1Count.innerHTML = counter;
     localStorage.setItem('container1Count', counter);
-    containerCapacity += GlassOfWater.capacity/1000;
-    allWater.innerHTML = containerCapacity;
-    localStorage.setItem('allWater', containerCapacity);
+    tempAllWater += GlassOfWater.capacity/1000;
+    allWater.innerHTML = tempAllWater;
+    localStorage.setItem('allWater', tempAllWater);
     container1Button.classList.add('bounce-4');
     setTimeout(() => {
         container1Button.classList.remove('bounce-4');
@@ -56,6 +56,7 @@ container1Button.addEventListener('click', () => {
 container2Button.addEventListener('click', () => {
     container2CounterLs = localStorage.getItem('container2Count');
     var counter = 0;
+    var tempAllWater = parseFloat(allWater.innerHTML);
     if (container2CounterLs==null) {
         counter = 0;
     }
@@ -65,6 +66,9 @@ container2Button.addEventListener('click', () => {
     counter = counter + 1;
     container2Count.innerHTML = counter;
     localStorage.setItem('container2Count', counter);
+    tempAllWater += smallBottle.capacity / 1000;
+    allWater.innerHTML = tempAllWater;
+    localStorage.setItem('allWater', tempAllWater);
     container2Button.classList.add('bounce-4');
     setTimeout(() => {
         container2Button.classList.remove('bounce-4');
@@ -74,6 +78,7 @@ container2Button.addEventListener('click', () => {
 container3Button.addEventListener('click', () => {
     container3CounterLs = localStorage.getItem('container3Count');
     var counter = 0;
+    var tempAllWater = parseFloat(allWater.innerHTML);
     if (container3CounterLs == null) {
         counter = 0;
     }
@@ -83,6 +88,9 @@ container3Button.addEventListener('click', () => {
     counter = counter + 1;
     container3Count.innerHTML = counter;
     localStorage.setItem('container3Count', counter);
+    tempAllWater += bigBottle.capacity / 1000;
+    allWater.innerHTML = tempAllWater;
+    localStorage.setItem('allWater', tempAllWater);
     container3Button.classList.add('bounce-4');
     setTimeout(() => {
         container3Button.classList.remove('bounce-4');
