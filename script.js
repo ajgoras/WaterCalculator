@@ -10,6 +10,8 @@ var container3Count = document.querySelector('#container3Val');
 var container3CounterLs = localStorage.getItem('container3Count');
 var allWater = document.querySelector('#allWater');
 var allWaterLs = localStorage.getItem('allWater');
+var addOwnContainerButton = document.querySelector('#addOwnContainerButton');
+var closeOwnContainerMenuButton = document.querySelector('#closeOwnContainerMenuButton');
 
 if (container1CounterLs!=null) {
     container1Count.innerHTML = parseInt(container1CounterLs);
@@ -108,4 +110,12 @@ resetButton.addEventListener('click', () => {
     setTimeout(() => {
         resetButton.classList.remove('bounce-4');
     }, 700);
+})
+
+addOwnContainerButton.addEventListener('click', () => {
+    document.querySelector("link[href='style.css']").href = "ownContainer.css";
+})
+
+closeOwnContainerMenuButton.addEventListener('click', () => {
+    document.querySelector("link[href='ownContainer.css']").href = "style.css";
 })
