@@ -88,11 +88,14 @@ h1{
 
 }
 
-
-button{
-    margin-top: 5px;
+#maindiv button{
     height: 35px;
     width: 45px;
+}
+
+button{
+    height: 35px;
+    margin-top: 5px;
     background-color: #e27005;
     border: none;
     border-radius: 15px;
