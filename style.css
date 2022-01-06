@@ -49,7 +49,7 @@ h1{
 }
 
 #ownContainerdiv{
-    transition: all 1s;
+    transition: all 1s linear;
     margin: 0;
 }
 

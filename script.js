@@ -112,7 +112,7 @@ resetButton.addEventListener('click', () => {
 })
 
 addOwnContainerButton.addEventListener('click', () => {
-    if (document.getElementById('ownContainerdiv').style.display != 'block') {
+    if (document.querySelector('#ownContainerdiv').classList.contains('hidden')) {
         addOwnContainerButton.classList.add('bounce-4');
         setTimeout(() => {
             addOwnContainerButton.classList.remove('bounce-4');
