@@ -116,8 +116,8 @@ addOwnContainerButton.addEventListener('click', () => {
         addOwnContainerButton.classList.add('bounce-4');
         setTimeout(() => {
             addOwnContainerButton.classList.remove('bounce-4');
-            document.getElementById('maindiv').style.display = 'none';
-            document.getElementById('ownContainerdiv').style.display = 'block';
+            document.querySelector('#ownContainerdiv').classList.remove('hidden');
+            document.querySelector('#maindiv').classList.add('hidden');
             var closeButton = document.createElement('button');
             closeButton.innerHTML = 'X';
             document.querySelector('#infodiv').appendChild(closeButton);
@@ -125,8 +125,8 @@ addOwnContainerButton.addEventListener('click', () => {
             closeButton.addEventListener('click', () => {
                 closeButton.classList.add('bounce-4');
                 setTimeout(() => {
-                    document.getElementById('ownContainerdiv').style.display = 'none';
-                    document.getElementById('maindiv').style.display = 'block';
+                    document.querySelector('#ownContainerdiv').classList.add('hidden');
+                    document.querySelector('#maindiv').classList.remove('hidden');
                     closeButton.classList.remove('bounce-4');
                     document.querySelector('#infodiv').removeChild(closeButton);
                 }, 670);

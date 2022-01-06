@@ -3,6 +3,14 @@
     --color-bg-light: rgb(4, 152, 252);
 }
 
+.hidden{
+    display: none;
+}
+  
+.visuallyhidden{
+    opacity: 0;
+}
+
 body{
     background: linear-gradient(
         to top right,
@@ -41,8 +49,8 @@ h1{
 }
 
 #ownContainerdiv{
+    transition: all 1s;
     margin: 0;
-    display: none;
 }
 
 .closeOwnContainerMenuButton{
