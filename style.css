@@ -31,18 +31,25 @@ h1{
 
 #infodiv{
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     margin: 0;
+    margin-bottom: 40px;
 }
 
-#infodiv button{
-    display: none;
+#infodiv h4{
+    position: absolute;
 }
 
 #ownContainerdiv{
+    margin: 0;
     display: none;
 }
 
+.closeOwnContainerMenuButton{
+    margin: 0;
+    margin-left: 80%;
+    position: absolute;
+}
 
 .bg{
     animation:slide 12s ease-in-out infinite alternate;

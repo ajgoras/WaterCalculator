@@ -113,9 +113,31 @@ resetButton.addEventListener('click', () => {
 })
 
 addOwnContainerButton.addEventListener('click', () => {
-    document.querySelector("link[href='style.css']").href = "ownContainer.css";
+    if (document.getElementById('ownContainerdiv').style.display != 'block') {
+        addOwnContainerButton.classList.add('bounce-4');
+        setTimeout(() => {
+            addOwnContainerButton.classList.remove('bounce-4');
+            document.getElementById('maindiv').style.display = 'none';
+            document.getElementById('ownContainerdiv').style.display = 'block';
+            var closeButton = document.createElement('button');
+            closeButton.innerHTML = 'X';
+            document.querySelector('#infodiv').appendChild(closeButton);
+            closeButton.classList.add('closeOwnContainerMenuButton');
+            closeButton.addEventListener('click', () => {
+                closeButton.classList.add('bounce-4');
+                setTimeout(() => {
+                    document.getElementById('ownContainerdiv').style.display = 'none';
+                    document.getElementById('maindiv').style.display = 'block';
+    
+                    closeButton.classList.remove('bounce-4');
+                    document.querySelector('#infodiv').removeChild(closeButton);
+                }, 670);
+            })
+        }, 670);
+
+    }
 })
 
-closeOwnContainerMenuButton.addEventListener('click', () => {
-    document.querySelector("link[href='ownContainer.css']").href = "style.css";
-})
+// closeOwnContainerMenuButton.addEventListener('click', () => {
+//     //document.querySelector("link[href='ownContainer.css']").href = "style.css";
+// })
