@@ -11,7 +11,6 @@ var container3CounterLs = localStorage.getItem('container3Count');
 var allWater = document.querySelector('#allWater');
 var allWaterLs = localStorage.getItem('allWater');
 var addOwnContainerButton = document.querySelector('#addOwnContainerButton');
-var closeOwnContainerMenuButton = document.querySelector('#closeOwnContainerMenuButton');
 
 if (container1CounterLs!=null) {
     container1Count.innerHTML = parseInt(container1CounterLs);
@@ -128,16 +127,10 @@ addOwnContainerButton.addEventListener('click', () => {
                 setTimeout(() => {
                     document.getElementById('ownContainerdiv').style.display = 'none';
                     document.getElementById('maindiv').style.display = 'block';
-    
                     closeButton.classList.remove('bounce-4');
                     document.querySelector('#infodiv').removeChild(closeButton);
                 }, 670);
             })
         }, 670);
-
     }
 })
-
-// closeOwnContainerMenuButton.addEventListener('click', () => {
-//     //document.querySelector("link[href='ownContainer.css']").href = "style.css";
-// })
