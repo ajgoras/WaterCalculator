@@ -11,6 +11,8 @@ var container3CounterLs = localStorage.getItem('container3Count');
 var allWater = document.querySelector('#allWater');
 var allWaterLs = localStorage.getItem('allWater');
 var addOwnContainerButton = document.querySelector('#addOwnContainerButton');
+var confirmOwnContainerButton = document.querySelector('#confirmOwnContainerButton');
+var allContainersCount = document.getElementsByClassName('containerDivs').length;
 
 if (container1CounterLs!=null) {
     container1Count.innerHTML = parseInt(container1CounterLs);
@@ -133,4 +135,32 @@ addOwnContainerButton.addEventListener('click', () => {
             })
         }, 670);
     }
+})
+
+confirmOwnContainerButton.addEventListener('click', () => {
+    var containerNameInput = document.querySelector('#inputv1').value;
+    var containerCapacityInput = document.querySelector('#inputv2').value;
+    var createdContainer = new WaterContainer(containerNameInput, containerCapacityInput);
+    var closeButton = document.querySelector('#infodiv button')
+    allContainersCount = allContainersCount + 1;
+    var thisContainerNumber = allContainersCount;
+    var original = document.getElementsByClassName('c3');
+    original = original[0];
+    var clone = original.cloneNode(true);
+    //original.parentNode.appendChild(clone);
+    document.querySelector('#maindiv').appendChild(clone);
+    clone.classList.remove('c3');
+    clone.classList.add('c' + thisContainerNumber);
+
+    document.querySelector('.containerDivs:last-child h2').innerHTML = createdContainer.name + ' (' + createdContainer.capacity + ml + ')';
+    document.querySelector('.containerDivs:last-child button').id = 'container' + thisContainerNumber + 'Button';
+    document.querySelector('.containerDivs:last-child h3').id = 'container' + thisContainerNumber + 'Val';
+    confirmOwnContainerButton.classList.add('bounce-4');
+    setTimeout(() => {
+        document.querySelector('#ownContainerdiv').classList.add('hidden');
+        document.querySelector('#maindiv').classList.remove('hidden');
+        confirmOwnContainerButton.classList.remove('bounce-4');
+        document.querySelector('#infodiv').removeChild(closeButton);
+    }, 670);
+
 })

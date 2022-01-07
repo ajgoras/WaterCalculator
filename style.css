@@ -53,6 +53,29 @@ h1{
     margin: 0;
 }
 
+#ownContainerdiv p{
+    font-size: 18px;
+}
+
+#ownContainerdiv button{
+    width: 70px;
+}
+
+#ownContainerdiv input{
+    background-color: rgb(1, 159, 199);
+    margin: 5px;
+    height: 23px;
+    border-width: 0.5px;
+    border-color: #1b1b1b;
+    border-radius: 10px;
+    font-size: 16px;
+}
+#ownContainerdiv #inputv1{
+    width: 165px;
+}
+
+
+
 .closeOwnContainerMenuButton{
     margin: 0;
     margin-left: 85%;
