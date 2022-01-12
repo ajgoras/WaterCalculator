@@ -13,6 +13,7 @@ var allWaterLs = localStorage.getItem('allWater');
 var addOwnContainerButton = document.querySelector('#addOwnContainerButton');
 var confirmOwnContainerButton = document.querySelector('#confirmOwnContainerButton');
 var allContainersCount = document.getElementsByClassName('containerDivs').length;
+var allContainersCountLs = localStorage.getItem('allContainersCount');
 
 if (container1CounterLs!=null) {
     container1Count.innerHTML = parseInt(container1CounterLs);
@@ -155,6 +156,33 @@ confirmOwnContainerButton.addEventListener('click', () => {
     document.querySelector('.containerDivs:last-child h2').innerHTML = createdContainer.name + ' (' + createdContainer.capacity + ml + ')';
     document.querySelector('.containerDivs:last-child button').id = 'container' + thisContainerNumber + 'Button';
     document.querySelector('.containerDivs:last-child h3').id = 'container' + thisContainerNumber + 'Val';
+    var createdAddingButton = document.querySelector('.containerDivs:last-child button');
+    allContainersCount = document.getElementsByClassName('containerDivs').length;
+    var newContainerLs = localStorage.setItem('container' + thisContainerNumber + 'Count', 0);
+    var newContainerCount = document.querySelector('#container' + thisContainerNumber + 'Val');
+
+    createdAddingButton.addEventListener('click', () => {
+        newContainerLs = localStorage.getItem('container' + thisContainerNumber + 'Count');
+        var counter = 0;
+        var tempAllWater = parseFloat(allWater.innerHTML);
+        if (newContainerLs == null) {
+            counter = 0;
+        }
+        else {
+            counter = parseInt(newContainerLs);
+        }
+        counter = counter + 1;
+        newContainerCount.innerHTML = counter;
+        localStorage.setItem('container' + thisContainerNumber + 'Count', counter);
+        tempAllWater += createdContainer.capacity / 1000;
+        allWater.innerHTML = tempAllWater;
+        localStorage.setItem('allWater', tempAllWater);
+        createdAddingButton.classList.add('bounce-4');
+        setTimeout(() => {
+            createdAddingButton.classList.remove('bounce-4');
+        }, 700);
+    })
+
     confirmOwnContainerButton.classList.add('bounce-4');
     setTimeout(() => {
         document.querySelector('#ownContainerdiv').classList.add('hidden');
@@ -164,3 +192,4 @@ confirmOwnContainerButton.addEventListener('click', () => {
     }, 670);
 
 })
+//TODO: nastpeny commit: repaired not working buttons in new containers
