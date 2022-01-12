@@ -28,6 +28,11 @@ if (allWaterLs != null) {
     allWater.innerHTML = parseFloat(allWaterLs);
 }
 
+if (allContainersCountLs != null) {
+    allContainersCount = parseInt(allContainersCountLs);
+    
+}
+
 var containerValues = document.querySelectorAll('.containerValues');
 var containerDivs = document.querySelectorAll('.containerDivs');
 
@@ -35,6 +40,16 @@ containerDivs[0].querySelector('h2').innerHTML = GlassOfWater.name + ' (' + Glas
 containerDivs[1].querySelector('h2').innerHTML = smallBottle.name + ' (' + smallBottle.capacity + ml + ')';
 containerDivs[2].querySelector('h2').innerHTML = bigBottle.name + ' (' + bigBottle.capacity + ml + ')';
 
+localStorage.setItem('container1Name', GlassOfWater.name);
+localStorage.setItem('container2Name', smallBottle.name);
+localStorage.setItem('container3Name', bigBottle.name);
+
+localStorage.setItem('container1Capacity', GlassOfWater.capacity);
+localStorage.setItem('container2Capacity', smallBottle.capacity);
+localStorage.setItem('container3Capacity', bigBottle.capacity);
+if (allContainersCountLs==null) {
+    localStorage.setItem('allContainersCount', containerDivs.length);
+}
 container1Button.addEventListener('click', () => {
     container1CounterLs = localStorage.getItem('container1Count');
     var counter = 0;
@@ -158,18 +173,20 @@ confirmOwnContainerButton.addEventListener('click', () => {
     document.querySelector('.containerDivs:last-child h3').id = 'container' + thisContainerNumber + 'Val';
     var createdAddingButton = document.querySelector('.containerDivs:last-child button');
     allContainersCount = document.getElementsByClassName('containerDivs').length;
-    var newContainerLs = localStorage.setItem('container' + thisContainerNumber + 'Count', 0);
+    var newContainerCountLs = localStorage.setItem('container' + thisContainerNumber + 'Count', 0);
     var newContainerCount = document.querySelector('#container' + thisContainerNumber + 'Val');
-
+    localStorage.setItem('container' + thisContainerNumber + 'Name', createdContainer.name);
+    localStorage.setItem('container' + thisContainerNumber + 'Capacity', createdContainer.capacity);
+    localStorage.setItem('allContainersCount', allContainersCount);
     createdAddingButton.addEventListener('click', () => {
-        newContainerLs = localStorage.getItem('container' + thisContainerNumber + 'Count');
+        newContainerCountLs = localStorage.getItem('container' + thisContainerNumber + 'Count');
         var counter = 0;
         var tempAllWater = parseFloat(allWater.innerHTML);
-        if (newContainerLs == null) {
+        if (newContainerCountLs == null) {
             counter = 0;
         }
         else {
-            counter = parseInt(newContainerLs);
+            counter = parseInt(newContainerCountLs);
         }
         counter = counter + 1;
         newContainerCount.innerHTML = counter;
@@ -191,5 +208,57 @@ confirmOwnContainerButton.addEventListener('click', () => {
         document.querySelector('#infodiv').removeChild(closeButton);
     }, 670);
 
+
 })
-//TODO: nastpeny commit: repaired not working buttons in new containers
+
+function render() {
+    var allContainers = allContainersCountLs;
+    for (let i = 3; i < allContainers; i++) {
+        const element = allContainers[i];
+        biggeri = i + 1;
+        
+        var containerName = localStorage.getItem('container' + biggeri + 'Name');
+        var containerCapacity = localStorage.getItem('container' + biggeri + 'Capacity');
+        var containerCount = localStorage.getItem('container' + biggeri + 'Count');
+
+        var original = document.getElementsByClassName('c3');
+        original = original[0];
+        var clone = original.cloneNode(true);
+        //original.parentNode.appendChild(clone);
+        document.querySelector('#maindiv').appendChild(clone);
+        clone.classList.remove('c3');
+        clone.classList.add('c' + biggeri);
+
+        document.querySelector('.containerDivs:last-child h2').innerHTML = containerName + ' (' + containerCapacity + ml + ')';
+        document.querySelector('.containerDivs:last-child button').id = 'container' + biggeri + 'Button';
+        document.querySelector('.containerDivs:last-child h3').id = 'container' + biggeri + 'Val';
+        var createdAddingButton = document.querySelector('.containerDivs:last-child button');
+        document.querySelector('.containerDivs:last-child h3').innerHTML = containerCount;
+        var newContainerCount = document.querySelector('#container' + biggeri + 'Val');
+
+        createdAddingButton.addEventListener('click', () => {
+            newContainerCountLs = localStorage.getItem('container' + biggeri + 'Count');
+            var counter = 0;
+            var tempAllWater = parseFloat(allWater.innerHTML);
+            if (newContainerCountLs == null) {
+                counter = 0;
+            }
+            else {
+                counter = parseInt(newContainerCountLs);
+            }
+            counter = counter + 1;
+            newContainerCount.innerHTML = counter;
+            localStorage.setItem('container' + biggeri + 'Count', counter);
+            tempAllWater += containerCapacity / 1000;
+            allWater.innerHTML = tempAllWater;
+            localStorage.setItem('allWater', tempAllWater);
+            createdAddingButton.classList.add('bounce-4');
+            setTimeout(() => {
+                createdAddingButton.classList.remove('bounce-4');
+            }, 700);
+        })
+    }
+}
+
+render();
+console.log(allContainersCount);
