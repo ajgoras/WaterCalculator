@@ -165,6 +165,12 @@ resetButton.addEventListener('click', () => {
         document.getElementById('resetButton').style.fontSize = '16px';
         document.getElementById('resetButton').style.width = '120px';
         isResetButtonClicked = 1;
+        setTimeout(() => {
+            isResetButtonClicked = 0;
+            resetButton.innerHTML = 'RESET';
+            document.getElementById('resetButton').style.fontSize = '18px';
+            document.getElementById('resetButton').style.width = '80px';
+        }, 1700);
     }
 
     
