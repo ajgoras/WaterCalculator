@@ -163,6 +163,7 @@ button:hover{
 
 #resetButton{
     margin-top: 20px;
+    margin-right: 10px;
     height: 35px;
     width: 80px;
     background-color: #e24b05;

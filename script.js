@@ -116,42 +116,58 @@ container3Button.addEventListener('click', () => {
     }, 700);
 })
 
+isResetButtonClicked = 0;
 resetButton.addEventListener('click', () => {
-    localStorage.clear();
-    var allContainers = allContainersCountLs;
-    var counts = document.querySelectorAll('.containerValues');
-    counts.forEach(element => {
-        element.innerHTML = 0;
-    });
-    allWater.innerHTML = 0;
+    if (isResetButtonClicked==1) {
+        localStorage.clear();
+        var allContainers = allContainersCountLs;
+        var counts = document.querySelectorAll('.containerValues');
+        counts.forEach(element => {
+            element.innerHTML = 0;
+        });
+        allWater.innerHTML = 0;
 
-    localStorage.setItem('container1Name', GlassOfWater.name);
-    localStorage.setItem('container2Name', smallBottle.name);
-    localStorage.setItem('container3Name', bigBottle.name);
+        localStorage.setItem('container1Name', GlassOfWater.name);
+        localStorage.setItem('container2Name', smallBottle.name);
+        localStorage.setItem('container3Name', bigBottle.name);
 
-    localStorage.setItem('container1Capacity', GlassOfWater.capacity);
-    localStorage.setItem('container2Capacity', smallBottle.capacity);
-    localStorage.setItem('container3Capacity', bigBottle.capacity);
-    if (allContainersCountLs==null) {
-        localStorage.setItem('allContainersCount', containerDivs.length);
-    }
-    if (allContainersCountLs==null) {
-        localStorage.setItem('allContainersCount', containerDivs.length);
-    }
-
-    if (allContainers>3) {
-        var elements = document.querySelectorAll('.containerDivs');
-        for (let j = 0; j < elements.length; j++) {
-            if (elements[j].classList.contains('defaultContainerdiv')==false) {
-                elements[j].parentNode.removeChild(elements[j]);
-            }
-            
+        localStorage.setItem('container1Capacity', GlassOfWater.capacity);
+        localStorage.setItem('container2Capacity', smallBottle.capacity);
+        localStorage.setItem('container3Capacity', bigBottle.capacity);
+        if (allContainersCountLs==null) {
+            localStorage.setItem('allContainersCount', containerDivs.length);
         }
+        if (allContainersCountLs==null) {
+            localStorage.setItem('allContainersCount', containerDivs.length);
+        }
+
+        if (allContainers>3) {
+            var elements = document.querySelectorAll('.containerDivs');
+            for (let j = 0; j < elements.length; j++) {
+                if (elements[j].classList.contains('defaultContainerdiv')==false) {
+                    elements[j].parentNode.removeChild(elements[j]);
+                }
+                
+            }
+        }
+        resetButton.classList.add('bounce-4');
+        setTimeout(() => {
+            resetButton.classList.remove('bounce-4');
+            isResetButtonClicked = 0;
+            resetButton.innerHTML = 'RESET';
+            document.getElementById('resetButton').style.fontSize = '18px';
+            document.getElementById('resetButton').style.width = '80px';
+
+        }, 700);
     }
-    resetButton.classList.add('bounce-4');
-    setTimeout(() => {
-        resetButton.classList.remove('bounce-4');
-    }, 700);
+    else {
+        resetButton.innerHTML = 'Are you sure?';
+        document.getElementById('resetButton').style.fontSize = '16px';
+        document.getElementById('resetButton').style.width = '120px';
+        isResetButtonClicked = 1;
+    }
+
+    
 })
 
 addOwnContainerButton.addEventListener('click', () => {
