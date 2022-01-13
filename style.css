@@ -25,8 +25,8 @@ body{
 
 h1{
     text-align: center;
-    margin-top: 20px;
-    margin-bottom: 5px;
+    margin-top: 0px;
+    margin-bottom: 0px;
 }
 
 #allWaterdiv{
@@ -45,7 +45,83 @@ h1{
 }
 
 #infodiv h4{
+    margin: 0;
     position: absolute;
+}
+
+#langButtondiv{
+    text-align: left;
+    align-items: flex-start;
+    justify-content: left;
+}
+
+#langButtondiv.PL .icon{
+    transform: translateX(33px);
+}
+
+#langButton{
+    background-color: #303030;
+    border-radius: 50px;
+    height: 40px;
+    outline-width: 5px;
+    position: relative;
+    width: 75px;
+    margin-top: 15px;
+}
+
+#langButton:hover{
+    cursor: pointer;
+    border: #303030 solid 0px;
+}
+
+
+
+
+#plendiv{
+    display: flex;
+    justify-content: space-between;
+}
+
+#langButton p{
+    margin-right: 6px;
+    margin-left: 6px;
+    font-size: 12px;
+    color: white;
+}
+
+.icon {
+    background-color: #303030;
+    border-radius: 100%;
+    content: "";
+    display: block;
+    height: 25px;
+    margin: -32px 2px;
+    position: absolute;
+    opacity: 99%;
+    width: 25px;
+    transition: background-color 0.3s;
+    transition: transform 0.3s;
+}
+
+span{
+    bottom: 75%;
+    color: var(--color-main);
+    font-size: 16px;
+    left: 50%;
+    padding: 12px 0;
+    position: absolute;
+    transform: translateX(-50%);
+    transition: color 0.3s;
+    width: 100%;
+}
+
+h6{
+    visibility: hidden;
+}
+
+#header{
+    display: flex;
+    justify-content: space-between;
 }
 
 #ownContainerdiv{

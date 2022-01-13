@@ -14,6 +14,8 @@ var addOwnContainerButton = document.querySelector('#addOwnContainerButton');
 var confirmOwnContainerButton = document.querySelector('#confirmOwnContainerButton');
 var allContainersCount = document.getElementsByClassName('containerDivs').length;
 var allContainersCountLs = localStorage.getItem('allContainersCount');
+var lang = localStorage.getItem('lang');
+var langButton = document.querySelector('#langButton');
 
 if (container1CounterLs!=null) {
     container1Count.innerHTML = parseInt(container1CounterLs);
@@ -50,6 +52,78 @@ localStorage.setItem('container3Capacity', bigBottle.capacity);
 if (allContainersCountLs==null) {
     localStorage.setItem('allContainersCount', containerDivs.length);
 }
+if (lang==null) {
+    localStorage.setItem('lang', 'PL');
+}
+
+langButton.addEventListener('click', () => {
+    if (lang == 'EN') {
+        document.querySelector('#langButtondiv').classList.remove('EN');
+        document.querySelector('#langButtondiv').classList.add('PL');
+        lang = 'PL';
+        localStorage.setItem('lang', lang);
+        document.querySelector('.c1 h2').innerHTML = GlassOfWater.name + ' (' + GlassOfWater.capacity + ml + ')';
+        document.querySelector('.c2 h2').innerHTML = smallBottle.name + ' (' + smallBottle.capacity + ml + ')';
+        document.querySelector('.c3 h2').innerHTML = bigBottle.name + ' (' + bigBottle.capacity + ml + ')';
+        document.querySelector('#addOwnContainerButton').innerHTML = 'Dodaj własne naczynie';
+        document.querySelector('#infodiv h4').innerHTML = 'Ile wody wypiłeś/aś?';
+        document.querySelector('h1').innerHTML = 'Kalkulator Wody';
+        var pfromownContainerdiv = document.querySelectorAll('#ownContainerdiv p');
+        pfromownContainerdiv[0].innerHTML = 'Dodaj własne naczynie';
+        pfromownContainerdiv[1].innerHTML = 'Nazwa naczynia:<input id="inputv1">';
+        pfromownContainerdiv[2].innerHTML = 'Pojemność naczynia:<input id="inputv2">(ml)';
+        document.querySelector('#ownContainerdiv button').innerHTML = 'Dodaj';
+
+    }
+    else {
+        document.querySelector('#langButtondiv').classList.remove('PL');
+        document.querySelector('#langButtondiv').classList.add('EN');
+        lang = 'EN';
+        localStorage.setItem('lang', lang);
+        document.querySelector('.c1 h2').innerHTML = 'Glass of Water' +  ' (' + GlassOfWater.capacity + ml + ')';
+        document.querySelector('.c2 h2').innerHTML = 'Small Bottle' + ' (' + smallBottle.capacity + ml + ')';
+        document.querySelector('.c3 h2').innerHTML = 'Big Bottle' + ' (' + bigBottle.capacity + ml + ')';
+        document.querySelector('#addOwnContainerButton').innerHTML = 'Add own container';
+        document.querySelector('#infodiv h4').innerHTML = 'How much water did you drink?';
+        document.querySelector('h1').innerHTML = 'Water Calculator';
+        var pfromownContainerdiv = document.querySelectorAll('#ownContainerdiv p');
+        pfromownContainerdiv[0].innerHTML = 'Add own Container';
+        pfromownContainerdiv[1].innerHTML = 'Container name:<input id="inputv1">';
+        pfromownContainerdiv[2].innerHTML = 'Container capacity:<input id="inputv2">(ml)';
+        document.querySelector('#ownContainerdiv button').innerHTML = 'Add';
+    }
+})
+
+if (lang=='PL') {
+    document.querySelector('#langButtondiv').classList.add('PL');
+    document.querySelector('.c1 h2').innerHTML = GlassOfWater.name + ' (' + GlassOfWater.capacity + ml + ')';
+    document.querySelector('.c2 h2').innerHTML = smallBottle.name + ' (' + smallBottle.capacity + ml + ')';
+    document.querySelector('.c3 h2').innerHTML = bigBottle.name + ' (' + bigBottle.capacity + ml + ')';
+    document.querySelector('#addOwnContainerButton').innerHTML = 'Dodaj własne naczynie';
+    document.querySelector('#infodiv h4').innerHTML = 'Ile wody wypiłeś/aś?';
+    document.querySelector('h1').innerHTML = 'Kalkulator Wody';
+    var pfromownContainerdiv = document.querySelectorAll('#ownContainerdiv p');
+    pfromownContainerdiv[0].innerHTML = 'Dodaj własne naczynie';
+    pfromownContainerdiv[1].innerHTML = 'Nazwa naczynia:<input id="inputv1">';
+    pfromownContainerdiv[2].innerHTML = 'Pojemność naczynia:<input id="inputv2">(ml)';
+    document.querySelector('#ownContainerdiv button').innerHTML = 'Dodaj';
+}
+
+if (lang=='EN') {
+    document.querySelector('#langButtondiv').classList.add('EN');
+    document.querySelector('.c1 h2').innerHTML = 'Glass of Water' +  ' (' + GlassOfWater.capacity + ml + ')';
+    document.querySelector('.c2 h2').innerHTML = 'Small Bottle' + ' (' + smallBottle.capacity + ml + ')';
+    document.querySelector('.c3 h2').innerHTML = 'Big Bottle' + ' (' + bigBottle.capacity + ml + ')';
+    document.querySelector('#addOwnContainerButton').innerHTML = 'Add own container';
+    document.querySelector('#infodiv h4').innerHTML = 'How much water did you drink?';
+    document.querySelector('h1').innerHTML = 'Water Calculator';
+    var pfromownContainerdiv = document.querySelectorAll('#ownContainerdiv p');
+    pfromownContainerdiv[0].innerHTML = 'Add own Container';
+    pfromownContainerdiv[1].innerHTML = 'Container name:<input id="inputv1">';
+    pfromownContainerdiv[2].innerHTML = 'Container capacity:<input id="inputv2">(ml)';
+    document.querySelector('#ownContainerdiv button').innerHTML = 'Add';
+}
+
 container1Button.addEventListener('click', () => {
     container1CounterLs = localStorage.getItem('container1Count');
     var counter = 0;
