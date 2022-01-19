@@ -1,3 +1,4 @@
+/// <reference path="./typings/globals/jquery/index.d.ts" />
 var container1Button = document.querySelector('#container1Button');
 var container2Button = document.querySelector('#container2Button');
 var container3Button = document.querySelector('#container3Button');
@@ -16,6 +17,7 @@ var allContainersCount = document.getElementsByClassName('containerDivs').length
 var allContainersCountLs = localStorage.getItem('allContainersCount');
 var lang = localStorage.getItem('lang');
 var langButton = document.querySelector('#langButton');
+var deleteTodayButton = document.querySelector('#resetTodayButton');
 
 if (container1CounterLs!=null) {
     container1Count.innerHTML = parseInt(container1CounterLs);
@@ -73,7 +75,8 @@ langButton.addEventListener('click', () => {
         pfromownContainerdiv[1].innerHTML = 'Nazwa naczynia:<input id="inputv1">';
         pfromownContainerdiv[2].innerHTML = 'Pojemność naczynia:<input id="inputv2">(ml)';
         document.querySelector('#ownContainerdiv button').innerHTML = 'Dodaj';
-
+        document.querySelector('#resetTodayButton').innerHTML = 'Resetuj Dzień';
+        document.querySelector('#resetButton').innerHTML = 'Resetuj Wszystko';
     }
     else {
         document.querySelector('#langButtondiv').classList.remove('PL');
@@ -91,6 +94,8 @@ langButton.addEventListener('click', () => {
         pfromownContainerdiv[1].innerHTML = 'Container name:<input id="inputv1">';
         pfromownContainerdiv[2].innerHTML = 'Container capacity:<input id="inputv2">(ml)';
         document.querySelector('#ownContainerdiv button').innerHTML = 'Add';
+        document.querySelector('#resetTodayButton').innerHTML = 'Reset Today';
+        document.querySelector('#resetButton').innerHTML = 'Reset All';
     }
 })
 
@@ -107,6 +112,8 @@ if (lang=='PL') {
     pfromownContainerdiv[1].innerHTML = 'Nazwa naczynia:<input id="inputv1">';
     pfromownContainerdiv[2].innerHTML = 'Pojemność naczynia:<input id="inputv2">(ml)';
     document.querySelector('#ownContainerdiv button').innerHTML = 'Dodaj';
+    document.querySelector('#resetTodayButton').innerHTML = 'Resetuj Dzień';
+    document.querySelector('#resetButton').innerHTML = 'Resetuj Wszystko';
 }
 
 if (lang=='EN') {
@@ -122,6 +129,8 @@ if (lang=='EN') {
     pfromownContainerdiv[1].innerHTML = 'Container name:<input id="inputv1">';
     pfromownContainerdiv[2].innerHTML = 'Container capacity:<input id="inputv2">(ml)';
     document.querySelector('#ownContainerdiv button').innerHTML = 'Add';
+    document.querySelector('#resetTodayButton').innerHTML = 'Reset Today';
+    document.querySelector('#resetButton').innerHTML = 'Reset All';
 }
 
 container1Button.addEventListener('click', () => {
@@ -194,13 +203,14 @@ isResetButtonClicked = 0;
 resetButton.addEventListener('click', () => {
     if (isResetButtonClicked==1) {
         localStorage.clear();
-        var allContainers = allContainersCountLs;
+        var animdiv = $("#animdiv");
+        animdiv.animate({ opacity: '0'}, "medium");
+        var allContainers = document.getElementsByClassName('containerDivs').length;
         var counts = document.querySelectorAll('.containerValues');
         counts.forEach(element => {
             element.innerHTML = 0;
         });
         allWater.innerHTML = 0;
-
         localStorage.setItem('container1Name', GlassOfWater.name);
         localStorage.setItem('container2Name', smallBottle.name);
         localStorage.setItem('container3Name', bigBottle.name);
@@ -208,6 +218,8 @@ resetButton.addEventListener('click', () => {
         localStorage.setItem('container1Capacity', GlassOfWater.capacity);
         localStorage.setItem('container2Capacity', smallBottle.capacity);
         localStorage.setItem('container3Capacity', bigBottle.capacity);
+        localStorage.setItem('lang', 'PL');
+        localStorage.setItem('allContainersCount', 3);
         if (allContainersCountLs==null) {
             localStorage.setItem('allContainersCount', containerDivs.length);
         }
@@ -215,35 +227,55 @@ resetButton.addEventListener('click', () => {
             localStorage.setItem('allContainersCount', containerDivs.length);
         }
 
-        if (allContainers>3) {
-            var elements = document.querySelectorAll('.containerDivs');
-            for (let j = 0; j < elements.length; j++) {
-                if (elements[j].classList.contains('defaultContainerdiv')==false) {
-                    elements[j].parentNode.removeChild(elements[j]);
-                }
-                
-            }
-        }
-        resetButton.classList.add('bounce-4');
         setTimeout(() => {
-            resetButton.classList.remove('bounce-4');
+            if (allContainers>3) {
+                var elements = document.querySelectorAll('.containerDivs');
+                for (let j = 0; j < elements.length; j++) {
+                    if (elements[j].classList.contains('defaultContainerdiv')==false) {
+                        elements[j].parentNode.removeChild(elements[j]);
+                    }
+                    
+                }
+            }
+        }, 400);
+        
+        setTimeout(() => {
+            animdiv.animate({ opacity: '1'}, "medium");
             isResetButtonClicked = 0;
-            resetButton.innerHTML = 'RESET';
-            document.getElementById('resetButton').style.fontSize = '18px';
-            document.getElementById('resetButton').style.width = '80px';
+
+            if (lang=='EN') {
+                resetButton.innerHTML = 'Reset All';
+                document.getElementById('resetButton').style.width = '80px';
+            }
+            else {
+                resetButton.innerHTML = 'Resetuj Wszystko';
+                document.getElementById('resetButton').style.width = '145px';
+
+            }
 
         }, 700);
     }
     else {
-        resetButton.innerHTML = 'Are you sure?';
-        document.getElementById('resetButton').style.fontSize = '16px';
-        document.getElementById('resetButton').style.width = '120px';
+        if (lang=='EN') {
+            resetButton.innerHTML = 'Are you sure?';
+            document.getElementById('resetButton').style.width = '120px';
+        }
+        else {
+            resetButton.innerHTML = 'Na Pewno?';
+            document.getElementById('resetButton').style.width = '100px';
+        }
+        
         isResetButtonClicked = 1;
         setTimeout(() => {
             isResetButtonClicked = 0;
-            resetButton.innerHTML = 'RESET';
-            document.getElementById('resetButton').style.fontSize = '18px';
-            document.getElementById('resetButton').style.width = '80px';
+            if (lang=='EN') {
+                resetButton.innerHTML = 'Reset All';
+                document.getElementById('resetButton').style.width = '80px';
+            }
+            else {
+                resetButton.innerHTML = 'Resetuj Wszystko';
+                document.getElementById('resetButton').style.width = '145px';
+            }
         }, 1700);
     }
 
@@ -333,6 +365,10 @@ confirmOwnContainerButton.addEventListener('click', () => {
 
 })
 
+deleteTodayButton.addEventListener('click', () => {
+    //#TODO:
+})
+
 function render() {
     var allContainers = allContainersCountLs;
     for (let i = 3; i < allContainers; i++) {
@@ -385,4 +421,3 @@ function render() {
 }
 
 render();
-console.log(allContainersCount);
