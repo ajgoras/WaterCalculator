@@ -226,15 +226,28 @@ h6{
 button{
     height: 35px;
     margin-top: 5px;
-    background-color: #e27005;
     border: solid 2px transparent;
     border-radius: 15px;
     font-size: 16px;
 }
 
+
+.btn-grad {background-image: linear-gradient(to right, #77A1D3 0%, #79CBCA  51%, #77A1D3  100%)}
+.btn-grad {
+   text-align: center;
+   transition: 0.5s;
+   background-size: 200% auto;
+ }
+
+ .btn-grad:hover {
+   background-position: right center; /* change the direction of the change here */
+   text-decoration: none;
+   border: #1b1b1b solid 1px;
+ }
+
+
 button:hover{
     cursor: pointer;
-    border: #bb5a00 solid 2px;
 }
 
 #resetButton{

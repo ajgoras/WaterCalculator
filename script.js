@@ -17,7 +17,7 @@ var allContainersCount = document.getElementsByClassName('containerDivs').length
 var allContainersCountLs = localStorage.getItem('allContainersCount');
 var lang = localStorage.getItem('lang');
 var langButton = document.querySelector('#langButton');
-var deleteTodayButton = document.querySelector('#resetTodayButton');
+var resetTodayButton = document.querySelector('#resetTodayButton');
 
 if (container1CounterLs!=null) {
     container1Count.innerHTML = parseInt(container1CounterLs);
@@ -36,7 +36,6 @@ if (allContainersCountLs != null) {
     allContainersCount = parseInt(allContainersCountLs);
     
 }
-
 var containerValues = document.querySelectorAll('.containerValues');
 var containerDivs = document.querySelectorAll('.containerDivs');
 
@@ -365,8 +364,21 @@ confirmOwnContainerButton.addEventListener('click', () => {
 
 })
 
-deleteTodayButton.addEventListener('click', () => {
-    //#TODO:
+resetTodayButton.addEventListener('click', () => {
+    var animdiv = $("#animdiv");
+    animdiv.animate({ opacity: '0' }, "medium");
+    setTimeout(() => {
+        var containers = document.querySelectorAll('.containerDivs');
+        for (let i = 0; i < containers.length; i++) {
+            var temp = i + 1;
+            localStorage.setItem('container' + temp + 'Count', 0);
+            var thisContainerCount = document.querySelector('#container' + temp + 'Val');
+            thisContainerCount.innerHTML = 0;
+        }
+        localStorage.setItem('allWater', 0);
+        document.querySelector('#allWater').innerHTML = 0;
+        animdiv.animate({ opacity: '1' }, "medium");
+    }, 500);
 })
 
 function render() {
