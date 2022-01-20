@@ -290,6 +290,7 @@ addOwnContainerButton.addEventListener('click', () => {
             document.querySelector('#maindiv').classList.add('hidden');
             var closeButton = document.createElement('button');
             closeButton.innerHTML = 'X';
+            closeButton.classList.add('btn-grad');
             document.querySelector('#infodiv').appendChild(closeButton);
             closeButton.classList.add('closeOwnContainerMenuButton');
             closeButton.addEventListener('click', () => {
