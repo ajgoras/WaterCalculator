@@ -244,11 +244,11 @@ resetButton.addEventListener('click', () => {
 
             if (lang=='EN') {
                 resetButton.innerHTML = 'Reset All';
-                document.getElementById('resetButton').style.width = '80px';
+                document.getElementById('resetButton').style.width = 'auto';
             }
             else {
                 resetButton.innerHTML = 'Resetuj Wszystko';
-                document.getElementById('resetButton').style.width = '145px';
+                document.getElementById('resetButton').style.width = 'auto';
 
             }
 
