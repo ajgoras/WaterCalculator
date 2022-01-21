@@ -257,11 +257,11 @@ resetButton.addEventListener('click', () => {
     else {
         if (lang=='EN') {
             resetButton.innerHTML = 'Are you sure?';
-            document.getElementById('resetButton').style.width = '120px';
+            document.getElementById('resetButton').style.width = 'auto';
         }
         else {
             resetButton.innerHTML = 'Na Pewno?';
-            document.getElementById('resetButton').style.width = '100px';
+            document.getElementById('resetButton').style.width = 'auto';
         }
         
         isResetButtonClicked = 1;
@@ -269,11 +269,11 @@ resetButton.addEventListener('click', () => {
             isResetButtonClicked = 0;
             if (lang=='EN') {
                 resetButton.innerHTML = 'Reset All';
-                document.getElementById('resetButton').style.width = '80px';
+                document.getElementById('resetButton').style.width = 'auto';
             }
             else {
                 resetButton.innerHTML = 'Resetuj Wszystko';
-                document.getElementById('resetButton').style.width = '145px';
+                document.getElementById('resetButton').style.width = 'auto';
             }
         }, 1700);
     }
