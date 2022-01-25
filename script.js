@@ -219,6 +219,7 @@ resetButton.addEventListener('click', () => {
         localStorage.setItem('container3Capacity', bigBottle.capacity);
         localStorage.setItem('lang', 'PL');
         localStorage.setItem('allContainersCount', 3);
+        allContainersCount = 3;
         if (allContainersCountLs==null) {
             localStorage.setItem('allContainersCount', containerDivs.length);
         }
@@ -244,10 +245,12 @@ resetButton.addEventListener('click', () => {
 
             if (lang=='EN') {
                 resetButton.innerHTML = 'Reset All';
+                document.getElementsByTagName('body')[0].style.height = '100%';
                 document.getElementById('resetButton').style.width = 'auto';
             }
             else {
                 resetButton.innerHTML = 'Resetuj Wszystko';
+                document.getElementsByTagName('body')[0].style.height = '100%';
                 document.getElementById('resetButton').style.width = 'auto';
 
             }
@@ -360,6 +363,7 @@ confirmOwnContainerButton.addEventListener('click', () => {
         document.querySelector('#maindiv').classList.remove('hidden');
         confirmOwnContainerButton.classList.remove('bounce-4');
         document.querySelector('#infodiv').removeChild(closeButton);
+        document.getElementsByTagName('body')[0].style.height = '100%';
     }, 670);
 
 
@@ -407,6 +411,7 @@ function render() {
         var createdAddingButton = document.querySelector('.containerDivs:last-child button');
         document.querySelector('.containerDivs:last-child h3').innerHTML = containerCount;
         var newContainerCount = document.querySelector('#container' + biggeri + 'Val');
+        document.getElementsByTagName('body')[0].style.height = '100%';
 
         createdAddingButton.addEventListener('click', () => {
             newContainerCountLs = localStorage.getItem('container' + biggeri + 'Count');
