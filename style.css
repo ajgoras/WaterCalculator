@@ -236,6 +236,28 @@ button:hover{
     opacity: 1;
 }
 
+.revealtime2{
+    position: relative;
+    transform: translateY(100px);
+    opacity: 0;
+    transition: all 1s ease;
+}
+.revealtime2.delayed{
+    transform: translateY(0px);
+    opacity: 1;
+}
+
+.revealtime3{
+    position: relative;
+    transform: translateY(100px);
+    opacity: 0;
+    transition: all 1s ease;
+}
+.revealtime3.delayed{
+    transform: translateY(0px);
+    opacity: 1;
+}
+
 @media only screen and (max-width: 768px) {
     #allWaterdiv{
         margin-left: 47.5%;
