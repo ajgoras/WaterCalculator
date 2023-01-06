@@ -16,12 +16,12 @@ _Drinking water is important in our life, this application can help you count, h
 
 #### _Main page EN/PL:_
 
-![Screenshot1](https://i.ibb.co/8n33nvv/imgonline-com-ua-twotoone-90nc-Rqkg-Ue-Alr-C.jpg) 
+![Screenshot1](https://raw.githubusercontent.com/ajgoras/WaterCalculator/main/images/image1.jpg) 
 
 #### _Add own container menu:_
 
-![Screenshot2](https://i.ibb.co/bzxShV9/image.png)
+![Screenshot2](https://raw.githubusercontent.com/ajgoras/WaterCalculator/main/images/image2.png)
 
 #### _Sample usage of app:_
-![Screenshot3](https://i.ibb.co/QF1qRzz/image.png)
+![Screenshot3](https://raw.githubusercontent.com/ajgoras/WaterCalculator/main/images/image3.png)
 
